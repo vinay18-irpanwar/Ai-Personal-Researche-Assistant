@@ -3,6 +3,9 @@
 An intelligent research automation tool that searches the web, extracts content, summarizes information, and generates structured reports — all from a single research question.
 
 ---
+<img width="1910" height="905" alt="Screenshot 2026-02-22 231153" src="https://github.com/user-attachments/assets/8d6efaee-648b-4133-858a-f9b9e8d2b5ae" />
+
+
 
 ## 📌 Overview
 
@@ -176,3 +179,4 @@ Pull requests and suggestions are welcome!
 ## 📜 License
 
 MIT License
+

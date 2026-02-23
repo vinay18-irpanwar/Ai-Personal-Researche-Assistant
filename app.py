@@ -1,7 +1,7 @@
 import streamlit as st
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_community.tools.tavily_search import TavilySearchResults
+from langchain_tavily import TavilySearch
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
@@ -38,7 +38,7 @@ llm = ChatGoogleGenerativeAI(
     google_api_key=GOOGLE_API_KEY
 )
 
-search_tool = TavilySearchResults(
+search_tool = TavilySearch(
     result="general",
     max_results=5,
     tavily_api_key=TAVILY_API_KEY
@@ -133,7 +133,7 @@ def generate_report(query):
 
     search_result = search_tool.invoke(query)
 
-    urls = urls = [item["url"] for item in search_result]
+    urls = urls = [search_result["results"][item]["url"] for item in range(0,5)]
 
     output = chain.invoke({"urls": urls})
 
@@ -174,4 +174,5 @@ if st.button("Generate Report"):
             st.markdown(report)
 
         except Exception as e:
+
             st.error(f"Error: {str(e)}")
